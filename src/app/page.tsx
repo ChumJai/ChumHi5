@@ -24,11 +24,11 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white shadow-md px-4 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <div className="flex items-center space-x-2 md:space-x-4">
+            <h1 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               ChumHi5
             </h1>
-            <nav className="hidden md:flex space-x-6">
+            <nav className="hidden md:flex space-x-3 lg:space-x-6">
               <a
                 href="#"
                 className="text-gray-700 hover:text-blue-600 font-medium"
@@ -61,12 +61,12 @@ export default function Home() {
               </a>
             </nav>
           </div>
-          <div className="flex items-center space-x-4">
-            <div className="relative">
+          <div className="flex items-center space-x-2 md:space-x-4">
+            <div className="relative hidden sm:block">
               <input
                 type="text"
                 placeholder="Search friends..."
-                className="px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 w-32 md:w-auto"
               />
             </div>
             <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
@@ -75,14 +75,14 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 py-6 flex gap-6">
+      <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6">
         {/* Left Sidebar - Profile & Navigation */}
-        <div className="w-1/4 space-y-6">
+        <div className="w-full lg:w-1/4 space-y-6">
           {/* Profile Card */}
           <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="text-center">
               <div
-                className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-gray-300"
+                className="w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-gray-300"
                 style={{
                   backgroundImage: "url('/bg.png')",
                   backgroundSize: "cover",
@@ -90,9 +90,11 @@ export default function Home() {
                   backgroundColor: "#ef4444",
                 }}
               ></div>
-              <h3 className="font-bold text-lg text-gray-800">Chum Hi5</h3>
-              <p className="text-gray-600 text-sm">@chumhi5</p>
-              <div className="mt-4 text-sm text-gray-600">
+              <h3 className="font-bold text-base md:text-lg text-gray-800">
+                Chum Hi5
+              </h3>
+              <p className="text-gray-600 text-xs md:text-sm">@chumhi5</p>
+              <div className="mt-4 text-xs md:text-sm text-gray-600">
                 <div className="flex justify-between">
                   <span>Friends:</span>
                   <span className="font-semibold text-blue-600">1,234</span>
@@ -106,7 +108,7 @@ export default function Home() {
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
+          <div className="bg-white rounded-lg shadow-lg p-4 hidden lg:block">
             <h4 className="font-bold text-gray-800 mb-3">Quick Actions</h4>
             <div className="space-y-2">
               <button className="w-full text-left px-3 py-2 rounded hover:bg-gray-100 text-gray-700">
@@ -126,26 +128,28 @@ export default function Home() {
         </div>
 
         {/* Center - Feed */}
-        <div className="flex-1 space-y-6">
+        <div className="flex-1 w-full lg:w-auto space-y-6">
           {/* Status Update */}
           <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">CH</span>
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm md:text-base">
+                  CH
+                </span>
               </div>
               <input
                 type="text"
                 placeholder="What's on your mind?"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-3 md:px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
               />
             </div>
-            <div className="flex justify-between items-center">
-              <div className="flex space-x-4 text-gray-600">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
+              <div className="flex space-x-2 md:space-x-4 text-gray-600 text-sm">
                 <button className="hover:text-blue-600">📷 Photo</button>
                 <button className="hover:text-green-600">🎵 Music</button>
                 <button className="hover:text-purple-600">📍 Location</button>
               </div>
-              <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full hover:opacity-90">
+              <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 md:px-6 py-2 rounded-full hover:opacity-90 text-sm md:text-base">
                 Post
               </button>
             </div>
@@ -156,30 +160,37 @@ export default function Home() {
             {/* Post 1 */}
             <div className="bg-white rounded-lg shadow-lg p-6">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold">JS</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm md:text-base">
+                    JS
+                  </span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">Jane Smith</h4>
-                  <p className="text-gray-600 text-sm">2 hours ago</p>
+                  <h4 className="font-semibold text-gray-800 text-sm md:text-base">
+                    Jane Smith
+                  </h4>
+                  <p className="text-gray-600 text-xs md:text-sm">
+                    2 hours ago
+                  </p>
                 </div>
               </div>
-              <p className="text-gray-800 mb-4">
+              <p className="text-gray-800 mb-4 text-sm md:text-base">
                 🎵 Check out this amazing song! Perfect for coding sessions 🎧
               </p>
-              <div className="rounded-lg overflow-hidden mb-4">
+              <div
+                className="relative w-full mb-4"
+                style={{ paddingBottom: "56.25%" }}
+              >
                 <iframe
-                  width="100%"
-                  height="315"
+                  className="absolute top-0 left-0 w-full h-full rounded-lg"
                   src="https://www.youtube.com/embed/PeTlqcugg2s"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                  className="rounded-lg"
                 ></iframe>
               </div>
-              <div className="flex items-center space-x-6 text-gray-600">
+              <div className="flex flex-wrap items-center gap-3 md:gap-6 text-gray-600 text-sm">
                 <button className="hover:text-red-500">❤️ Like (12)</button>
                 <button className="hover:text-blue-500">💬 Comment (3)</button>
                 <button className="hover:text-green-500">🔄 Share</button>
@@ -189,22 +200,30 @@ export default function Home() {
             {/* Post 2 */}
             <div className="bg-white rounded-lg shadow-lg p-6">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold">MJ</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm md:text-base">
+                    MJ
+                  </span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">Mike Johnson</h4>
-                  <p className="text-gray-600 text-sm">5 hours ago</p>
+                  <h4 className="font-semibold text-gray-800 text-sm md:text-base">
+                    Mike Johnson
+                  </h4>
+                  <p className="text-gray-600 text-xs md:text-sm">
+                    5 hours ago
+                  </p>
                 </div>
               </div>
-              <p className="text-gray-800 mb-4">
+              <p className="text-gray-800 mb-4 text-sm md:text-base">
                 Beautiful sunset today! 🌅 Nature never fails to amaze me. Hope
                 everyone is having a wonderful day!
               </p>
-              <div className="bg-gradient-to-r from-orange-400 to-pink-400 rounded-lg h-48 mb-4 flex items-center justify-center">
-                <span className="text-white text-lg">🌅 Sunset Photo</span>
+              <div className="bg-gradient-to-r from-orange-400 to-pink-400 rounded-lg h-32 md:h-48 mb-4 flex items-center justify-center">
+                <span className="text-white text-base md:text-lg">
+                  🌅 Sunset Photo
+                </span>
               </div>
-              <div className="flex items-center space-x-6 text-gray-600">
+              <div className="flex flex-wrap items-center gap-3 md:gap-6 text-gray-600 text-sm">
                 <button className="hover:text-red-500">❤️ Like (28)</button>
                 <button className="hover:text-blue-500">💬 Comment (7)</button>
                 <button className="hover:text-green-500">🔄 Share</button>
@@ -214,9 +233,9 @@ export default function Home() {
         </div>
 
         {/* Right Sidebar - Friends & Activity */}
-        <div className="w-1/4 space-y-6">
+        <div className="w-full lg:w-1/4 space-y-6">
           {/* Online Friends */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
+          <div className="bg-white rounded-lg shadow-lg p-4 hidden lg:block">
             <h4 className="font-bold text-gray-800 mb-3">Online Friends (8)</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -244,7 +263,7 @@ export default function Home() {
           </div>
 
           {/* Recent Activity */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
+          <div className="bg-white rounded-lg shadow-lg p-4 hidden lg:block">
             <h4 className="font-bold text-gray-800 mb-3">Recent Activity</h4>
             <div className="space-y-3 text-sm text-gray-600">
               <div className="flex items-start space-x-2">
@@ -275,7 +294,7 @@ export default function Home() {
           </div>
 
           {/* Trending */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
+          <div className="bg-white rounded-lg shadow-lg p-4 hidden lg:block">
             <h4 className="font-bold text-gray-800 mb-3">Trending</h4>
             <div className="space-y-2 text-sm">
               <div className="text-blue-600 hover:underline cursor-pointer">
