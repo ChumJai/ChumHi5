@@ -57,7 +57,7 @@ export default function Home() {
                 href="#"
                 className="text-gray-700 hover:text-blue-600 font-medium"
               >
-                Photos1
+                Photos12
               </a>
             </nav>
           </div>
