@@ -81,9 +81,15 @@ export default function Home() {
           {/* Profile Card */}
           <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-white text-2xl font-bold">CH</span>
-              </div>
+              <div
+                className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-gray-300"
+                style={{
+                  backgroundImage: "url('/bg.png')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundColor: "#ef4444",
+                }}
+              ></div>
               <h3 className="font-bold text-lg text-gray-800">Chum Hi5</h3>
               <p className="text-gray-600 text-sm">@chumhi5</p>
               <div className="mt-4 text-sm text-gray-600">
@@ -159,10 +165,20 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-800 mb-4">
-                Just deployed my new website! 🚀 Thanks to everyone who helped
-                with the design feedback. It looks amazing! Can&apos;t wait to
-                share more updates.
+                🎵 Check out this amazing song! Perfect for coding sessions 🎧
               </p>
+              <div className="rounded-lg overflow-hidden mb-4">
+                <iframe
+                  width="100%"
+                  height="315"
+                  src="https://www.youtube.com/embed/PeTlqcugg2s"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="rounded-lg"
+                ></iframe>
+              </div>
               <div className="flex items-center space-x-6 text-gray-600">
                 <button className="hover:text-red-500">❤️ Like (12)</button>
                 <button className="hover:text-blue-500">💬 Comment (3)</button>
