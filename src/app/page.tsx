@@ -1,6 +1,26 @@
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
+    <div
+      className="min-h-screen relative overflow-hidden"
+      style={{
+        position: "relative",
+      }}
+    >
+      {/* Tilted Background */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: "url(/bg.png)",
+          backgroundRepeat: "repeat",
+          backgroundSize: "80px 80px",
+          transform: "rotate(15deg)",
+          transformOrigin: "center",
+          width: "200%",
+          height: "200%",
+          top: "-50%",
+          left: "-50%",
+        }}
+      ></div>
       {/* Header */}
       <header className="bg-white shadow-md px-4 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
