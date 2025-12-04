@@ -1,4 +1,4 @@
-import { put, head } from "@vercel/blob";
+import { put } from "@vercel/blob";
 import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "edge";
