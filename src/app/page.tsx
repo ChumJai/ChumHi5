@@ -1,10 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [comment, setComment] = useState("");
   const [isPosting, setIsPosting] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  // เรียก API GET เมื่อเปิดเว็บ
+  useEffect(() => {
+    fetchComments();
+  }, []);
+
+  const fetchComments = async () => {
+    try {
+      const response = await fetch("/api/comments");
+      const data = await response.json();
+      console.log("Fetched comments:", data);
+      setComments(data.comments || []);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
 
   const handlePost = async () => {
     if (!comment.trim()) {
@@ -30,6 +47,8 @@ export default function Home() {
       if (response.ok) {
         alert("Posted successfully!");
         setComment("");
+        // รีเฟรชข้อมูล comments หลังจาก post
+        fetchComments();
       } else {
         alert("Failed to post: " + (data.error || "Unknown error"));
       }
@@ -209,6 +228,38 @@ export default function Home() {
 
           {/* Posts */}
           <div className="space-y-4">
+            {/* Comments from API */}
+            {comments.map((commentItem: any) => (
+              <div
+                key={commentItem.id}
+                className="bg-white rounded-lg shadow-lg p-6"
+              >
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold text-sm md:text-base">
+                      {commentItem.author.substring(0, 2).toUpperCase()}
+                    </span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 text-sm md:text-base">
+                      {commentItem.author}
+                    </h4>
+                    <p className="text-gray-600 text-xs md:text-sm">
+                      {new Date(commentItem.timestamp).toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-gray-800 mb-4 text-sm md:text-base">
+                  {commentItem.content}
+                </p>
+                <div className="flex flex-wrap items-center gap-3 md:gap-6 text-gray-600 text-sm">
+                  <button className="hover:text-red-500">❤️ Like</button>
+                  <button className="hover:text-blue-500">💬 Comment</button>
+                  <button className="hover:text-green-500">🔄 Share</button>
+                </div>
+              </div>
+            ))}
+
             {/* Post 1 */}
             <div className="bg-white rounded-lg shadow-lg p-6">
               <div className="flex items-center space-x-3 mb-4">
