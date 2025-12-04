@@ -1,4 +1,45 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
+  const [comment, setComment] = useState("");
+  const [isPosting, setIsPosting] = useState(false);
+
+  const handlePost = async () => {
+    if (!comment.trim()) {
+      alert("Please enter a comment");
+      return;
+    }
+
+    setIsPosting(true);
+    try {
+      const response = await fetch("/api/comments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: comment,
+          author: "Chum Hi5",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Posted successfully!");
+        setComment("");
+      } else {
+        alert("Failed to post: " + (data.error || "Unknown error"));
+      }
+    } catch (error) {
+      console.error("Error posting comment:", error);
+      alert("Failed to post comment");
+    } finally {
+      setIsPosting(false);
+    }
+  };
   return (
     <div
       className="min-h-screen relative overflow-hidden"
@@ -141,6 +182,13 @@ export default function Home() {
                 type="text"
                 placeholder="What's on your mind?"
                 className="flex-1 px-3 md:px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter" && !isPosting) {
+                    handlePost();
+                  }
+                }}
               />
             </div>
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -149,8 +197,12 @@ export default function Home() {
                 <button className="hover:text-green-600">🎵 Music</button>
                 <button className="hover:text-purple-600">📍 Location</button>
               </div>
-              <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 md:px-6 py-2 rounded-full hover:opacity-90 text-sm md:text-base">
-                Post
+              <button
+                className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 md:px-6 py-2 rounded-full hover:opacity-90 text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={handlePost}
+                disabled={isPosting}
+              >
+                {isPosting ? "Posting..." : "Post"}
               </button>
             </div>
           </div>
