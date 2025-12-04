@@ -13,6 +13,9 @@ interface Comment {
 
 // GET - ดึงข้อมูลจาก Vercel Blob
 export async function GET() {
+  console.log("ENV =", process.env.CHUM_READ_WRITE_TOKEN);
+  console.log("ENV1 =", process.env.chum_READ_WRITE_TOKEN);
+
   try {
     const blobUrl = process.env.chum_READ_WRITE_TOKEN
       ? `https://${process.env.BLOB_STORE_ID}.public.blob.vercel-storage.com/comments.json`
@@ -40,6 +43,8 @@ export async function GET() {
 
 // POST - บันทึกข้อมูลไปที่ Vercel Blob
 export async function POST(request: NextRequest) {
+  console.log("ENV =", process.env.CHUM_READ_WRITE_TOKEN);
+  console.log("ENV1 =", process.env.chum_READ_WRITE_TOKEN);
   try {
     const body = await request.json();
     const { content, author = "Chum Hi5" } = body;
